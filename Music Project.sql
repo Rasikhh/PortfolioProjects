@@ -45,14 +45,14 @@ where track_id in (
 )
 order by email;
 
---6. Return all the track names that have a song length longer than the average song length.
+--7. Return all the track names that have a song length longer than the average song length.
 --Return the Name and Milliseconds for each track. Order by the song length with the
 --longest songs listed first.
 select name, milliseconds from track
 where milliseconds > (select avg(milliseconds) from track)
-order by milliseconds desc
+order by milliseconds desc;
 
---7. Let's invite the artists who have written the most rock music in our dataset. Write a
+--8. Let's invite the artists who have written the most rock music in our dataset. Write a
 --query that returns the Artist name and total track count of the top 10 rock bands
 select artist.artist_id, artist.name, count(artist.artist_id) as num_of_songs
 from track
@@ -62,7 +62,7 @@ join genre on genre.genre_id = track.genre_id
 where genre.name like 'Rock'
 group by artist.artist_id
 order by num_of_songs desc
-limit 10
+limit 10;
 
 
 
